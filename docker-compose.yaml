@@ -1,0 +1,27 @@
+services:
+  service1:
+    # For the first node.js service
+    build: ./service1
+    image: service1
+    ports:
+      - "8199:8199"
+    # add depends_on so that service2 container is built first
+    depends_on:
+      - service2
+    networks:
+      - bridge_network
+
+  service2:
+    # For the second flask service
+    build: ./service2
+    image: service2
+    expose:
+      # expose the port internally
+      - "8200"
+    networks:
+      - bridge_network
+
+networks:
+  bridge_network:
+    # using bridge driver so that the containers can communicate with eachother
+    driver: bridge

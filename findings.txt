@@ -1,0 +1,4 @@
+Containers can share host files by using mounts (volume or bind). Containers also share host system's resources e.g. storage and CPU etc.
+When using Host Network driver, the containers share the network with the host that is public. Moreover they have the same IP address as the host.
+However, when for example bridge driver is used, it creates private network on the host and containers within that private network have their
+own IP addresses.
